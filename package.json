@@ -1,0 +1,31 @@
+{
+  "name": "tether-marks-core",
+  "version": "1.0.0",
+  "description": "Core utils for tether marks.",
+  "homepage": "https://github.com/Zetaniis/tether-marks-core#readme",
+  "bugs": {
+    "url": "https://github.com/Zetaniis/tether-marks-core/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zetaniis/tether-marks-core.git"
+  },
+  "license": "MIT",
+  "author": "Zetaniis",
+  "type": "commonjs",
+  "main": "index.ts",
+  "types": "src/types/index.ts",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0"
+  }
+}
