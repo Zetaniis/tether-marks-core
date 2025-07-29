@@ -13,13 +13,14 @@
   "license": "MIT",
   "author": "Zetaniis",
   "type": "commonjs",
-  "main": "index.ts",
-  "types": "src/types/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "dependencies": {
     "jest": "^30.0.5",
