@@ -11,7 +11,10 @@
     "url": "git+https://github.com/Zetaniis/tether-marks-core.git"
   },
   "license": "MIT",
-  "author": "Zetaniis",
+  "author": {
+    "name": "Zetaniis",
+    "email": "63559030+Zetaniis@users.noreply.github.com"
+  },
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
