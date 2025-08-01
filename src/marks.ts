@@ -1,4 +1,4 @@
-import { Settings } from './types/index';
+import { BasicMarksSettings } from './types/index';
 import { Mark } from './types/index';
 
 
@@ -21,7 +21,7 @@ export function sortMarksAlphabetically(marks: Mark[]) {
     marks.sort((a, b) => a.symbol.localeCompare(b.symbol))
 }
 
-export function getSortedAndFilteredMarks(marks: Mark[], isHarpoonMode: boolean, settings: Settings): Mark[] {
+export function getSortedAndFilteredMarks(marks: Mark[], isHarpoonMode: boolean, settings: BasicMarksSettings): Mark[] {
     const availableRegisters = new Set((!isHarpoonMode ? settings.registerList : settings.harpoonRegisterList).split(''));
     const filteredMarks: Mark[] = marks.filter(el => availableRegisters.has(el.symbol));
     if (!isHarpoonMode && settings.registerSortByList) {

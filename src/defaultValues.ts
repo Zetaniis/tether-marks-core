@@ -1,4 +1,4 @@
-import {  Settings, Mode } from "./types";
+import {  BasicMarksSettings as BasicMarksSettings, Mode } from "./types";
 
 // This is not used for now
 export const modalPlaceholderMessages : Record<Mode, string> = {
@@ -7,21 +7,12 @@ export const modalPlaceholderMessages : Record<Mode, string> = {
     delete: 'Select a mark to delete',
 };
 
-export const defaultSettings: Settings = {
-    // hideMarkListDuringInput: false,
-    modalListUp: '',
-    modalListDown: '',
-    modalListSelect: '',
-    modalListUndo: '',
-    modalListDelete: '',
-    modalListCancel: '',
-    openMarkInNewTab: false, // If true, open mark in new tab, else in current tab
+export const defaultBasicMarksSettings: BasicMarksSettings = {
     registerList: 'abcdefghijklmnopqrstuvwxyz',
     registerSortByList: true,
     harpoonRegisterList: 'qwer',
     harpoonRegisterSortByList: true,
     harpoonRegisterGapRemoval: true,
-    experimentalGoto: false,
 };
 
 export const modeDescription : Record<Mode, string> = {

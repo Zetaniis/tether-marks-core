@@ -13,8 +13,8 @@ import {
     gotoMarkNext,
     gotoMarkPrevious
 } from '../../src/marks';
-import { Mark, Settings } from '../../src/types/index';
-import { defaultSettings } from '../../src/defaultValues';
+import { Mark, BasicMarksSettings} from '../../src/types/index';
+import { defaultBasicMarksSettings } from '../../src/defaultValues';
 
 describe('marks utils', () => {
     const marks: Mark[] = [
@@ -64,13 +64,12 @@ describe('marks utils', () => {
     });
 
     describe('getSortedAndFilteredMarks', () => {
-        const settings: Settings = {
-            ...defaultSettings,
+        const settings: BasicMarksSettings = {
+            ...defaultBasicMarksSettings,
             registerList: 'ABCDE',
             harpoonRegisterList: 'ABCDE',
             registerSortByList: true,
             harpoonRegisterSortByList: false,
-            experimentalGoto: false
         };
 
         it('filters marks by available registers', () => {
