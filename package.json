@@ -26,11 +26,9 @@
     "build": "tsc",
     "watch": "tsc -w"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
     "jest": "^30.0.5",
     "ts-jest": "^29.4.0"
-  },
-  "devDependencies": {
-    "@types/jest": "^30.0.0"
   }
 }
