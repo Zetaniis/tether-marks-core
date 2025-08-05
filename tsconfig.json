@@ -4,7 +4,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "emitDeclarationOnly": false,
-    "module": "ESNext",
+    "module": "commonjs",
     "target": "ES2019",
     "moduleResolution": "Node",
     "esModuleInterop": true,

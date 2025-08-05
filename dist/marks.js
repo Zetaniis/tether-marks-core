@@ -1,4 +1,20 @@
-export function findFirstUnusedRegister(marks, registers) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.findFirstUnusedRegister = findFirstUnusedRegister;
+exports.getMarkBySymbol = getMarkBySymbol;
+exports.sortMarksAlphabetically = sortMarksAlphabetically;
+exports.getSortedAndFilteredMarks = getSortedAndFilteredMarks;
+exports.sortMarksBySettingsRegisterOrder = sortMarksBySettingsRegisterOrder;
+exports.removeGapsForHarpoonMarks = removeGapsForHarpoonMarks;
+exports.restoreLastChangedMark = restoreLastChangedMark;
+exports.setNewOrOverwriteMark = setNewOrOverwriteMark;
+exports.deleteMark = deleteMark;
+exports.isMarkInList = isMarkInList;
+exports.isMarkInListBySymbol = isMarkInListBySymbol;
+exports.isMarkInListByFilePath = isMarkInListByFilePath;
+exports.gotoMarkNext = gotoMarkNext;
+exports.gotoMarkPrevious = gotoMarkPrevious;
+function findFirstUnusedRegister(marks, registers) {
     for (const reg of registers) {
         // if register not used already, then use it
         // console.log('Checking register:', reg);
@@ -8,13 +24,13 @@ export function findFirstUnusedRegister(marks, registers) {
     }
     return null;
 }
-export function getMarkBySymbol(marks, symbol) {
+function getMarkBySymbol(marks, symbol) {
     return marks.find(m => m.symbol === symbol);
 }
-export function sortMarksAlphabetically(marks) {
+function sortMarksAlphabetically(marks) {
     marks.sort((a, b) => a.symbol.localeCompare(b.symbol));
 }
-export function getSortedAndFilteredMarks(marks, isHarpoonMode, settings) {
+function getSortedAndFilteredMarks(marks, isHarpoonMode, settings) {
     const availableRegisters = new Set((!isHarpoonMode ? settings.registerList : settings.harpoonRegisterList).split(''));
     const filteredMarks = marks.filter(el => availableRegisters.has(el.symbol));
     if (!isHarpoonMode && settings.registerSortByList) {
@@ -32,11 +48,11 @@ export function getSortedAndFilteredMarks(marks, isHarpoonMode, settings) {
     }
     return filteredMarks;
 }
-export function sortMarksBySettingsRegisterOrder(marks, registers) {
+function sortMarksBySettingsRegisterOrder(marks, registers) {
     const registerOrder = new Map([...registers].map((symbol, index) => [symbol, index]));
     marks.sort((a, b) => { var _a, _b; return ((_a = registerOrder.get(a.symbol)) !== null && _a !== void 0 ? _a : Infinity) - ((_b = registerOrder.get(b.symbol)) !== null && _b !== void 0 ? _b : Infinity); });
 }
-export function removeGapsForHarpoonMarks(marksToCopy, harpoonRegisters) {
+function removeGapsForHarpoonMarks(marksToCopy, harpoonRegisters) {
     let marks = [...marksToCopy];
     let leftCur = 0;
     let rightCur = 0;
@@ -57,34 +73,34 @@ export function removeGapsForHarpoonMarks(marksToCopy, harpoonRegisters) {
     }
     return marks;
 }
-export function restoreLastChangedMark(marks, lastChangedMark) {
+function restoreLastChangedMark(marks, lastChangedMark) {
     const markToRestore = { ...lastChangedMark };
     const markToDiscard = marks.find(m => m.symbol === markToRestore.symbol);
     const marksWithoutDiscarded = marks.filter(m => m.symbol !== markToRestore.symbol);
     marksWithoutDiscarded.push({ symbol: markToRestore.symbol, filePath: markToRestore.filePath });
     return { marks: marksWithoutDiscarded, markToDiscard: markToDiscard };
 }
-export function setNewOrOverwriteMark(marks, setMark, filePath) {
+function setNewOrOverwriteMark(marks, setMark, filePath) {
     const { marks: filteredMarks, deletedMark: overwrittenMark } = deleteMark(marks, setMark);
     filteredMarks.push({ symbol: setMark.symbol, filePath: filePath });
     return { marks: filteredMarks, overwrittenMark };
 }
-export function deleteMark(marks, markToDelete) {
+function deleteMark(marks, markToDelete) {
     const cMark = { ...markToDelete };
     const deletedMark = marks.find(m => m.symbol === cMark.symbol);
     const filteredMarks = marks.filter(m => m.symbol !== cMark.symbol);
     return { marks: filteredMarks, deletedMark };
 }
-export function isMarkInList(marks, mark) {
+function isMarkInList(marks, mark) {
     return marks.some(m => m.symbol === mark.symbol && m.filePath === mark.filePath);
 }
-export function isMarkInListBySymbol(marks, symbol) {
+function isMarkInListBySymbol(marks, symbol) {
     return marks.some(m => m.symbol === symbol);
 }
-export function isMarkInListByFilePath(marks, filePath) {
+function isMarkInListByFilePath(marks, filePath) {
     return marks.some(m => m.filePath === filePath);
 }
-export function gotoMarkNext(marks, registers, currentMark) {
+function gotoMarkNext(marks, registers, currentMark) {
     const sortedMarks = [...marks];
     sortMarksBySettingsRegisterOrder(sortedMarks, registers);
     const currentIndex = sortedMarks.findIndex(m => m.symbol === currentMark.symbol && m.filePath === currentMark.filePath);
@@ -93,7 +109,7 @@ export function gotoMarkNext(marks, registers, currentMark) {
     }
     return sortedMarks[currentIndex + 1];
 }
-export function gotoMarkPrevious(marks, registers, currentMark) {
+function gotoMarkPrevious(marks, registers, currentMark) {
     const sortedMarks = [...marks];
     sortMarksBySettingsRegisterOrder(sortedMarks, registers);
     const currentIndex = sortedMarks.findIndex(m => m.symbol === currentMark.symbol && m.filePath === currentMark.filePath);
