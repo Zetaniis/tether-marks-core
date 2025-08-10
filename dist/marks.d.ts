@@ -1,25 +1,25 @@
 import { BasicMarksSettings } from './types/index';
 import { Mark } from './types/index';
-export declare function findFirstUnusedRegister(marks: Mark[], registers: string[]): string | null;
-export declare function getMarkBySymbol(marks: Mark[], symbol: string): Mark | undefined;
-export declare function sortMarksAlphabetically(marks: Mark[]): void;
-export declare function getSortedAndFilteredMarks(marks: Mark[], isHarpoonMode: boolean, settings: BasicMarksSettings): Mark[];
-export declare function sortMarksBySettingsRegisterOrder(marks: Mark[], registers: string | string[]): void;
-export declare function removeGapsForHarpoonMarks(marksToCopy: Mark[], harpoonRegisters: string[]): Mark[];
-export declare function restoreLastChangedMark(marks: Mark[], lastChangedMark: Mark): {
-    marks: Mark[];
-    markToDiscard: Mark | undefined;
+export declare function findFirstUnusedRegister<T extends Mark>(marks: T[], registers: string[]): string | null;
+export declare function getMarkBySymbol<T extends Mark>(marks: T[], symbol: string): T | undefined;
+export declare function sortMarksAlphabetically<T extends Mark>(marks: T[]): void;
+export declare function getSortedAndFilteredMarks<T extends Mark>(marks: T[], isHarpoonMode: boolean, settings: BasicMarksSettings): T[];
+export declare function sortMarksBySettingsRegisterOrder<T extends Mark>(marks: T[], registers: string | string[]): void;
+export declare function removeGapsForHarpoonMarks<T extends Mark>(marksToCopy: T[], harpoonRegisters: string[]): T[];
+export declare function restoreLastChangedMark<T extends Mark>(marks: T[], lastChangedMark: T): {
+    marks: T[];
+    markToDiscard: T | undefined;
 };
-export declare function setNewOrOverwriteMark(marks: Mark[], setMark: Mark, filePath: string): {
-    marks: Mark[];
-    overwrittenMark?: Mark;
+export declare function setNewOrOverwriteMark<T extends Mark>(marks: T[], setMark: T, filePath: string): {
+    marks: T[];
+    overwrittenMark?: T;
 };
-export declare function deleteMark(marks: Mark[], markToDelete: Mark): {
-    marks: Mark[];
-    deletedMark?: Mark;
+export declare function deleteMark<T extends Mark>(marks: T[], markToDelete: T): {
+    marks: T[];
+    deletedMark?: T;
 };
-export declare function isMarkInList(marks: Mark[], mark: Mark): boolean;
-export declare function isMarkInListBySymbol(marks: Mark[], symbol: string): boolean;
-export declare function isMarkInListByFilePath(marks: Mark[], filePath: string): boolean;
-export declare function gotoMarkNext(marks: Mark[], registers: string[] | string, currentMark: Mark): Mark | undefined;
-export declare function gotoMarkPrevious(marks: Mark[], registers: string[] | string, currentMark: Mark): Mark | undefined;
+export declare function isMarkInList<T extends Mark>(marks: T[], mark: T): boolean;
+export declare function isMarkInListBySymbol<T extends Mark>(marks: T[], symbol: string): boolean;
+export declare function isMarkInListByFilePath<T extends Mark>(marks: T[], filePath: string): boolean;
+export declare function gotoMarkNext<T extends Mark>(marks: T[], registers: string[] | string, currentMark: T): T | undefined;
+export declare function gotoMarkPrevious<T extends Mark>(marks: T[], registers: string[] | string, currentMark: T): T | undefined;

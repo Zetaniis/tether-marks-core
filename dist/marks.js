@@ -61,7 +61,7 @@ function removeGapsForHarpoonMarks(marksToCopy, harpoonRegisters) {
         if (markEl !== undefined) {
             const symbolToSetTo = harpoonRegisters[leftCur];
             let filteredMarks = marks.filter(el => el.symbol !== harpoonRegisters[leftCur]);
-            filteredMarks.push({ symbol: symbolToSetTo, filePath: markEl.filePath });
+            filteredMarks.push(Object.assign({}, markEl, { symbol: symbolToSetTo, filePath: markEl.filePath }));
             marks = filteredMarks;
             leftCur += 1;
         }
@@ -77,12 +77,12 @@ function restoreLastChangedMark(marks, lastChangedMark) {
     const markToRestore = { ...lastChangedMark };
     const markToDiscard = marks.find(m => m.symbol === markToRestore.symbol);
     const marksWithoutDiscarded = marks.filter(m => m.symbol !== markToRestore.symbol);
-    marksWithoutDiscarded.push({ symbol: markToRestore.symbol, filePath: markToRestore.filePath });
+    marksWithoutDiscarded.push(Object.assign({}, markToRestore, { symbol: markToRestore.symbol, filePath: markToRestore.filePath }));
     return { marks: marksWithoutDiscarded, markToDiscard: markToDiscard };
 }
 function setNewOrOverwriteMark(marks, setMark, filePath) {
     const { marks: filteredMarks, deletedMark: overwrittenMark } = deleteMark(marks, setMark);
-    filteredMarks.push({ symbol: setMark.symbol, filePath: filePath });
+    filteredMarks.push(Object.assign({}, setMark, { symbol: setMark.symbol, filePath: filePath }));
     return { marks: filteredMarks, overwrittenMark };
 }
 function deleteMark(marks, markToDelete) {
